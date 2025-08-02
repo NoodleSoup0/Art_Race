@@ -1,7 +1,5 @@
-// src/components/Navbar.jsx
 import { Link } from 'react-router-dom';
-import FontSizeControls from './FontsSizeControls'
-import '../styles/style.css'
+import FontSizeControls from './FontSizeControls'
 
 const Navbar = () => {
   return (

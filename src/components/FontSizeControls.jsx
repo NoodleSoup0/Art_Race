@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import '../styles/FontsSizeControls.css';
+import '../styles/FontSizeControls.css';
 
 function FontSizeControls() {
-  const [fontSize, setFontSize] = useState(16);
+  const [fontSize, setFontSize] = useState(17);
 
   useEffect(() => {
     document.documentElement.style.fontSize = `${fontSize}px`;

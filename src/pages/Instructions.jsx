@@ -1,6 +1,4 @@
 import Navbar from '../components/Navbar';
-import FontSizeControls from '../components/FontsSizeControls';
-import '../styles/style.css'
 
 function Instructions() {
   return (

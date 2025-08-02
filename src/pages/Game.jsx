@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Lightbox from '../components/Lightbox.jsx';
 import Navbar from '../components/Navbar.jsx';
-import '../styles/style.css'
+import '../styles/Game.css'
 
 function Game() {
   const [lightboxOpen, setLightboxOpen] = useState(false);

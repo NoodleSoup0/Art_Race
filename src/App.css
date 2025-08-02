@@ -27,6 +27,10 @@ img {
   body {
     font-size: 1.25rem;
   }
+
+  .subtitle {
+    font-size: 2rem;
+  }
 }
 
 /* Typography */
@@ -42,6 +46,12 @@ h1 {
 
 .main-header {
   font-size: 2.5rem;
+  text-align: center;
+}
+
+nav {
+  background-color: #444;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -82,6 +92,22 @@ main {
   margin: auto;
 }
 
+/* Centering */
+.centered-main {
+  text-align: center;
+}
+
+.center-line {
+  width: 75%;
+  margin: 1rem auto;
+  border: 1px solid #ccc;
+}
+
+.center-buttons {
+  text-align: center;
+  margin-top: 2rem;
+}
+
 /* Footer */
 footer {
   background-color: #444;
@@ -95,8 +121,8 @@ footer a {
   color: white;
   text-decoration: none;
 }
-
+/* 
 footer a:hover,
 footer a:focus {
   text-decoration: underline;
-}
+} */
