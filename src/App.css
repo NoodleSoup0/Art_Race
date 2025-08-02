@@ -1,42 +1,102 @@
-.App {
+/* Box sizing reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Base styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  background-color: #fdfdfd;
+  color: #222;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive base font size */
+@media (min-width: 768px) {
+  body {
+    font-size: 1.25rem;
+  }
+}
+
+/* Typography */
+h1 {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-header {
+  font-size: 2.5rem;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Links */
+nav a {
+  color: #fff;
+  margin: 0 1rem;
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+nav a:focus,
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  background-color: #001f3f;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button:focus,
+.button:hover {
+  outline: 2px solid #001f3f;
+  background-color: #003366;
+}
+
+/* Layout container */
+main {
+  max-width: 1600px;
+  width: 100%;
+  padding: 2rem;
+  margin: auto;
+}
+
+/* Footer */
+footer {
+  background-color: #444;
   color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+footer a {
+  color: white;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-button {
-  font-size: calc(10px + 2vmin);
+footer a:hover,
+footer a:focus {
+  text-decoration: underline;
 }
