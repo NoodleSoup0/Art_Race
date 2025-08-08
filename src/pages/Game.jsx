@@ -1,39 +1,49 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Lightbox from '../components/Lightbox.jsx';
 import Navbar from '../components/Navbar.jsx';
-import '../styles/Game.css'
+import { searchPaintings } from '../utils/aic'; // Adjust path if needed
+import '../styles/Game.css';
 
 function Game() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [images, setImages] = useState([]);
 
-  const images = [
-    {
-      src: '/images/night-watch.jpg',
-      alt: 'The Night Watch by Rembrandt van Rijn',
-    },
-    {
-      src: '/images/sample1.jpg',
-      alt: 'Las Meninas by Diego Velázquez',
-    },
-    {
-      src: '/images/sample2.jpg',
-      alt: 'Girl with a Pearl Earring by Johannes Vermeer',
-    },
-    {
-      src: '/images/sample3.jpg',
-      alt: 'The Hay Wain by John Constable',
-    },
-    {
-      src: '/images/sample4.jpg',
-      alt: 'The Goldfinch by Carel Fabritius',
-    },
-  ];
+  useEffect(() => {
+    const fetchPaintings = async () => {
+      try {
+        const response = await searchPaintings('impressionism');
+        const data = response?.data?.filter(p => p.image_id).slice(0, 5);
+
+        const formatted = data.map(painting => ({
+          src: `https://www.artic.edu/iiif/2/${painting.image_id}/full/843,/0/default.jpg`,
+          alt: `${painting.title} by ${painting.artist_display || 'Unknown'}`,
+        }));
+
+        setImages(formatted);
+      } catch (error) {
+        console.error('Error fetching paintings:', error);
+      }
+    };
+
+    fetchPaintings();
+  }, []);
 
   const openLightbox = (index) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
   };
+
+  if (images.length === 0) {
+    return (
+      <>
+        <Navbar />
+        <main className="centered-main full-height">
+          <p>Loading paintings...</p>
+        </main>
+      </>
+    );
+  }
 
   return (
     <>
@@ -48,14 +58,14 @@ function Game() {
             onDoubleClick={() => openLightbox(0)}
           />
           <div className="painting-info">
-            <p><strong>Current:</strong> “The Night Watch” by Rembrandt van Rijn</p>
+            <p><strong>Current:</strong> {images[0].alt}</p>
             <p><strong>Target:</strong> “The Persistence of Memory”, Salvador Dalí</p>
           </div>
           <div className="tracker">
             <h2>Track Your Steps</h2>
             <div className="tracker-scroll" tabIndex={0}>
               <div className="circle">1</div>
-              <p>"The Night Watch" by Rembrandt van Rijn</p>
+              <p>{images[0].alt}</p>
               <div className="circle">?</div>
             </div>
           </div>
@@ -68,14 +78,11 @@ function Game() {
                 src={img.src}
                 alt={img.alt}
                 tabIndex={0}
-                onDoubleClick={() => {
-                  console.log("Opening lightbox:", index + 1);
-                  openLightbox(index + 1);
-                }}
+                onDoubleClick={() => openLightbox(index + 1)}
               />
               <p className="title">{img.alt.split(' by ')[0]}</p>
               <p className="artist">{img.alt.split(' by ')[1]}</p>
-              <p className="link-type"> {/* Replace with actual link types if available */}</p>
+              <p className="link-type"></p>
             </div>
           ))}
         </div>
@@ -86,10 +93,11 @@ function Game() {
         images={images}
         index={lightboxIndex}
         onClose={() => setLightboxOpen(false)}
-        onPrev={() => setLightboxIndex((lightboxIndex - 1 + images.length) % images.length)}
+        onPrev={() =>
+          setLightboxIndex((lightboxIndex - 1 + images.length) % images.length)
+        }
         onNext={() => setLightboxIndex((lightboxIndex + 1) % images.length)}
       />
-      
     </>
   );
 }
