@@ -10,7 +10,7 @@ function Home() {
       <main className="centered-main full-height spaced-text">
         <h1 className="main-header">Welcome to ArtRace!</h1>
         <p className="main-header">
-          Navigate between paintings connected by artists, styles, movements and eras.
+          Travel through time by unraveling the perfect chronological order of masterpieces, collecting iconic paintings as you master the art of history—one round, one artist at a time.
         </p>
         <div className="center-buttons">
           <Link to="/game" className="button">Start Game</Link>

@@ -3,16 +3,6 @@ import axios from 'axios';
 
 const BASE_URL = 'https://api.artic.edu/api/v1';
 
-export const fetchPaintingById = async (id) => {
-  try {
-    const response = await axios.get(`${BASE_URL}/artworks/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching painting:', error);
-    return null;
-  }
-};
-
 export const searchPaintings = async (query) => {
   try {
     const response = await axios.get(`${BASE_URL}/artworks/search`, {

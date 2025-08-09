@@ -7,52 +7,32 @@ function About() {
       <main className="centered-main full-height spaced-text">
         <h1>About ArtRace / Credits</h1>
         <hr className="center-line" aria-hidden="true" />
-        <p>Created to provide an accessible way to explore art visually and interactively.</p>
-        <p>Credit for information and images to:</p>
         <p>
-          <a
-            href="https://www.moma.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            The Museum of Modern Art
-          </a>
+          ArtRace is designed to provide an engaging, interactive way to explore art history by
+          connecting paintings through artist influence, style, and chronology.
         </p>
+        <p>Data and images are primarily sourced from:</p>
+
         <p>
           <a
-            href="https://metmuseum.org/"
+            href="https://www.wikidata.org/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            The MET Collection API
-          </a>
+            Wikidata SPARQL Query Service
+          </a>{' '}
+          — for retrieving artist networks, painting metadata, dates, and images.
         </p>
+
         <p>
           <a
-            href="https://api.artic.edu/"
+            href="https://www.wikipedia.org/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            The Art Institute of Chicago API
-          </a>
-        </p>
-        <p>
-          <a
-            href="https://www.rijksmuseum.nl/en"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Rijksmuseum API
-          </a>
-        </p>
-        <p>
-          <a
-            href="https://www.wikiart.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WikiArt API
-          </a>
+            Wikipedia API
+          </a>{' '}
+          — for fetching artist and painting summaries and fun facts.
         </p>
       </main>
     </>
